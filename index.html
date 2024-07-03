@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color and Font Showcase</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Arial:wght@400;700&family=Courier+New:wght@400;700&family=Comic+Sans+MS:wght@400;700&family=Georgia:wght@400;700&family=Helvetica:wght@400;700&family=Impact:wght@400;700&family=Tahoma:wght@400;700&family=Times+New+Roman:wght@400;700&family=Trebuchet+MS:wght@400;700&family=Verdana:wght@400;700&display=swap"
+    />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        direction: ltr;
+        margin: 20px;
+      }
+
+      h1,
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        table-layout: fixed;
+      }
+
+      th,
+      td {
+        border: 1px solid #ccc;
+        text-align: center;
+        padding: 10px;
+        word-wrap: break-word;
+      }
+
+      .gradient-white {
+        background: linear-gradient(90deg, #ffffff, #f2f2f2, #c0c0c0);
+      }
+
+      .gradient-black {
+        background: linear-gradient(90deg, #000000, #575757, #a9a9a9);
+      }
+
+      .gradient-light-gray {
+        background: linear-gradient(90deg, #f2f2f2, #c0c0c0, #a9a9a9);
+      }
+
+      .gradient-dark-gray {
+        background: linear-gradient(90deg, #575757, #a9a9a9, #000000);
+      }
+
+      .gradient-medium-gray {
+        background: linear-gradient(90deg, #c0c0c0, #a9a9a9, #575757);
+      }
+
+      .gradient-pink {
+        background: linear-gradient(90deg, #ff69b4, #ffb6c1, #c71585);
+        color: white;
+      }
+
+      .gradient-blue {
+        background: linear-gradient(90deg, #87cefa, #00bfff, #4169e1);
+        color: white;
+      }
+
+      .gradient-green {
+        background: linear-gradient(90deg, #98ff98, #32cd32, #006400);
+        color: white;
+      }
+
+      .gradient-orange {
+        background: linear-gradient(90deg, #ff7f50, #ffa07a, #ff4500);
+        color: white;
+      }
+
+      .gradient-purple {
+        background: linear-gradient(90deg, #4b0082, #8a2be2, #6a5acd);
+        color: white;
+      }
+
+      .gradient-light-purple {
+        background: linear-gradient(90deg, #9370db, #ba55d3, #8b008b);
+        color: white;
+      }
+
+      .gradient-bright-green {
+        background: linear-gradient(90deg, #00ff7f, #3cb371, #2e8b57);
+        color: white;
+      }
+
+      .gradient-yellow {
+        background: linear-gradient(90deg, #ffff00, #ffffe0, #ffd700);
+        color: black;
+      }
+
+      .gradient-crimson {
+        background: linear-gradient(90deg, #dc143c, #ff6347, #8b0000);
+        color: white;
+      }
+
+      .gradient-turquoise {
+        background: linear-gradient(90deg, #40e0d0, #afeeee, #008b8b);
+        color: white;
+      }
+
+      /* Fonts */
+      .font-arial {
+        font-family: "Arial", sans-serif;
+      }
+
+      .font-georgia {
+        font-family: "Georgia", serif;
+      }
+
+      .font-helvetica {
+        font-family: "Helvetica", sans-serif;
+      }
+
+      .font-times-new-roman {
+        font-family: "Times New Roman", serif;
+      }
+
+      .font-courier-new {
+        font-family: "Courier New", monospace;
+      }
+
+      .font-verdana {
+        font-family: "Verdana", sans-serif;
+      }
+
+      .font-tahoma {
+        font-family: "Tahoma", sans-serif;
+      }
+
+      .font-trebuchet-ms {
+        font-family: "Trebuchet MS", sans-serif;
+      }
+
+      .font-impact {
+        font-family: "Impact", sans-serif;
+      }
+
+      .font-comic-sans-ms {
+        font-family: "Comic Sans MS", cursive;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        table {
+          font-size: 0.8em;
+        }
+
+        th,
+        td {
+          padding: 5px;
+        }
+      }
+
+      /* Toast Notification */
+      #toast {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 2px;
+        padding: 16px;
+        position: fixed;
+        z-index: 1;
+        left: 50%;
+        bottom: 30px;
+        font-size: 17px;
+      }
+
+      #toast.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+
+      @keyframes fadein {
+        from {
+          bottom: 0;
+          opacity: 0;
+        }
+        to {
+          bottom: 30px;
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeout {
+        from {
+          bottom: 30px;
+          opacity: 1;
+        }
+        to {
+          bottom: 0;
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Color and Font Showcase</h1>
+    <table class="color-table">
+      <thead>
+        <tr>
+          <th>Color</th>
+          <th>Hex 1</th>
+          <th>Hex 2</th>
+          <th>Hex 3</th>
+          <th>Linear Gradient</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Added basic colors -->
+        <tr>
+          <td>White</td>
+          <td style="background-color: #ffffff">#FFFFFF</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-white"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #FFFFFF, #F2F2F2, #C0C0C0);')"
+          >
+            White Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Black</td>
+          <td style="background-color: #000000; color: white">#000000</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-black"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #000000, #575757, #A9A9A9);')"
+          >
+            Black Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Light Gray</td>
+          <td style="background-color: #f2f2f2">#F2F2F2</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-light-gray"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #F2F2F2, #C0C0C0, #A9A9A9);')"
+          >
+            Light Gray Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Dark Gray</td>
+          <td style="background-color: #575757">#575757</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-dark-gray"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #575757, #A9A9A9, #000000);')"
+          >
+            Dark Gray Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Medium Gray</td>
+          <td style="background-color: #c0c0c0">#C0C0C0</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-medium-gray"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #C0C0C0, #A9A9A9, #575757);')"
+          >
+            Medium Gray Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Dark Gray</td>
+          <td style="background-color: #a9a9a9">#A9A9A9</td>
+          <td></td>
+          <td></td>
+          <td
+            class="gradient-dark-gray"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #A9A9A9, #575757, #000000);')"
+          >
+            Dark Gray Gradient
+          </td>
+        </tr>
+        <!-- Gradient colors and text for gradient name -->
+        <tr>
+          <td>Pink</td>
+          <td style="background-color: #ff69b4">#FF69B4</td>
+          <td style="background-color: #ffb6c1">#FFB6C1</td>
+          <td style="background-color: #c71585">#C71585</td>
+          <td
+            class="gradient-pink"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #ff69b4, #ffb6c1, #c71585);')"
+          >
+            Pink Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Light Blue</td>
+          <td style="background-color: #87cefa">#87CEFA</td>
+          <td style="background-color: #00bfff">#00BFFF</td>
+          <td style="background-color: #4169e1">#4169E1</td>
+          <td
+            class="gradient-blue"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #87cefa, #00bfff, #4169e1);')"
+          >
+            Blue Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Mint Green</td>
+          <td style="background-color: #98ff98">#98FF98</td>
+          <td style="background-color: #32cd32">#32CD32</td>
+          <td style="background-color: #006400">#006400</td>
+          <td
+            class="gradient-green"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #98ff98, #32cd32, #006400);')"
+          >
+            Green Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Coral Orange</td>
+          <td style="background-color: #ff7f50">#FF7F50</td>
+          <td style="background-color: #ffa07a">#FFA07A</td>
+          <td style="background-color: #ff4500">#FF4500</td>
+          <td
+            class="gradient-orange"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #ff7f50, #ffa07a, #ff4500);')"
+          >
+            Orange Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Dark Purple</td>
+          <td style="background-color: #4b0082">#4B0082</td>
+          <td style="background-color: #8a2be2">#8A2BE2</td>
+          <td style="background-color: #6a5acd">#6A5ACD</td>
+          <td
+            class="gradient-purple"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #4b0082, #8a2be2, #6a5acd);')"
+          >
+            Purple Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Light Purple</td>
+          <td style="background-color: #9370db">#9370DB</td>
+          <td style="background-color: #ba55d3">#BA55D3</td>
+          <td style="background-color: #8b008b">#8B008B</td>
+          <td
+            class="gradient-light-purple"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #9370db, #ba55d3, #8b008b);')"
+          >
+            Light Purple Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Bright Green</td>
+          <td style="background-color: #00ff7f">#00FF7F</td>
+          <td style="background-color: #3cb371">#3CB371</td>
+          <td style="background-color: #2e8b57">#2E8B57</td>
+          <td
+            class="gradient-bright-green"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #00ff7f, #3cb371, #2e8b57);')"
+          >
+            Bright Green Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Bright Yellow</td>
+          <td style="background-color: #ffff00">#FFFF00</td>
+          <td style="background-color: #ffffe0">#FFFFE0</td>
+          <td style="background-color: #ffd700">#FFD700</td>
+          <td
+            class="gradient-yellow"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #ffff00, #ffffe0, #ffd700);')"
+          >
+            Yellow Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Crimson Red</td>
+          <td style="background-color: #dc143c">#DC143C</td>
+          <td style="background-color: #ff6347">#FF6347</td>
+          <td style="background-color: #8b0000">#8B0000</td>
+          <td
+            class="gradient-crimson"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #dc143c, #ff6347, #8b0000);')"
+          >
+            Crimson Gradient
+          </td>
+        </tr>
+        <tr>
+          <td>Turquoise</td>
+          <td style="background-color: #40e0d0">#40E0D0</td>
+          <td style="background-color: #afeeee">#AFEEEE</td>
+          <td style="background-color: #008b8b">#008B8B</td>
+          <td
+            class="gradient-turquoise"
+            onclick="copyToClipboard('background: linear-gradient(90deg, #40e0d0, #afeeee, #008b8b);')"
+          >
+            Turquoise Gradient
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Examples of Text in Different Fonts</h2>
+    <table class="font-table">
+      <thead>
+        <tr>
+          <th>Font</th>
+          <th>Example Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Arial</td>
+          <td class="font-arial">This is Arial font.</td>
+        </tr>
+        <tr>
+          <td>Georgia</td>
+          <td class="font-georgia">This is Georgia font.</td>
+        </tr>
+        <tr>
+          <td>Helvetica</td>
+          <td class="font-helvetica">This is Helvetica font.</td>
+        </tr>
+        <tr>
+          <td>Times New Roman</td>
+          <td class="font-times-new-roman">This is Times New Roman font.</td>
+        </tr>
+        <tr>
+          <td>Courier New</td>
+          <td class="font-courier-new">This is Courier New font.</td>
+        </tr>
+        <tr>
+          <td>Verdana</td>
+          <td class="font-verdana">This is Verdana font.</td>
+        </tr>
+        <tr>
+          <td>Tahoma</td>
+          <td class="font-tahoma">This is Tahoma font.</td>
+        </tr>
+        <tr>
+          <td>Trebuchet MS</td>
+          <td class="font-trebuchet-ms">This is Trebuchet MS font.</td>
+        </tr>
+        <tr>
+          <td>Impact</td>
+          <td class="font-impact">This is Impact font.</td>
+        </tr>
+        <tr>
+          <td>Comic Sans MS</td>
+          <td class="font-comic-sans-ms">This is Comic Sans MS font.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="toast">Copied</div>
+
+    <script>
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(
+          function () {
+            showToast();
+          },
+          function (err) {
+            console.error("Async: Could not copy text: ", err);
+          }
+        );
+      }
+
+      function showToast() {
+        var x = document.getElementById("toast");
+        x.className = "show";
+        setTimeout(function () {
+          x.className = x.className.replace("show", "");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
